@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 )
 
-func getMyIpAddress(w http.ResponseWriter, r *http.Request)  {
-	url := "http://ipinfo.io"
+func getServerInfo(w http.ResponseWriter, r *http.Request)  {
+	url := "http://ipinfo.io/"
 
 	resp, _ := http.Get(url)
 	defer resp.Body.Close()
@@ -23,6 +23,6 @@ func helloWorld(w http.ResponseWriter, r *http.Request){
 func main() {
 	fmt.Print(" \n ---Hello World---\n")
 	http.HandleFunc("/", helloWorld)
-	http.HandleFunc("/ip", helloWorld)
+	http.HandleFunc("/info", getServerInfo)
 	http.ListenAndServe(":8080", nil)
 }
